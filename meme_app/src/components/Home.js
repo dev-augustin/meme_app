@@ -9,8 +9,8 @@ export default function Home() {
         <div>
             <Router>
             <nav>
-                <h3>Welcome to Meme Generator</h3>
-                <Route path="/" component={Search}/>
+                <h2>Welcome to Meme Generator</h2>
+                <Route path="/Search" component={Search}/>
                 <Route path="/CreateMeme" component={CreateMeme}/>
              </nav>
             </Router>
