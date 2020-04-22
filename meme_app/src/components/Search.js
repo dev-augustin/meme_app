@@ -19,14 +19,18 @@ export default class Search extends Component {
     constructor(props){
         super(props);
         this.state = {
-            searchValue
+            searchValue: ''
         }
+    }
+
+    handleChange = (event) =>{
+
     }
     render() {
         return (
             <div>
                 <form>
-                    <input type="text" name="Search" value="Search" placeholder="Search"/>
+                    <input type="text" name="Search" value="Search" placeholder="Search" onChnage={this.handleChange}/>
                     <input type="Submit" name="Search" value="Search" />
                  </form>
             </div>
