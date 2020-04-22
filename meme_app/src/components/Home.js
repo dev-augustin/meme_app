@@ -8,6 +8,7 @@ export default function Home() {
     return (
         <div>
              <h2>Welcome to Meme Generator</h2>
+
             <Router>
             <nav>
                 <ul>
