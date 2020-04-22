@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
+import './components/Home';
 
 function App() {
   return (
     <React.Fragment>
     <div className="App">
-      <h1>Welcome to Meme Generator</h1>
-    </div>
-    <div>
-      <button>Search</button>
-      <button>Create Meme</button>
+      <Home/>
     </div>
     </React.Fragment>
   );
