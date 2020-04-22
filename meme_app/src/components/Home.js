@@ -6,11 +6,14 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 export default function Home() {
     return (
         <div>
-        <Router>
-        
-        </Router>
+            <Router>
+            <nav>
+                <h3>Welcome to Meme Generator</h3>
+                <Route path="/" />
+             </nav>
+            </Router>
         </div>
-    //     <div>
+     //     <div>
     //         <React.Fragment>
     // <div className="App">
     //   <h1>Welcome to Meme Generator</h1>
@@ -20,7 +23,7 @@ export default function Home() {
     //   <button>Create Meme</button>
     // </div>
     // </React.Fragment>
-    //     </div>
+    //     </div> 
 
 
     )
