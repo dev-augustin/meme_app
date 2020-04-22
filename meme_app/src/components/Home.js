@@ -7,11 +7,23 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 export default function Home() {
     return (
         <div>
+             <h2>Welcome to Meme Generator</h2>
             <Router>
             <nav>
-                <h2>Welcome to Meme Generator</h2>
+                <ul>
+                    <li>
+                       <Link to ='/Search'> Search</Link>
+                    </li>
+                    <li>
+                        <Link to = '/CreateMeme'>Create Meme</Link>
+                    </li>
+                    <li>  <Link to = '/Home'> Go back to Home </Link> </li>
+                </ul>
+                
+               
                 <Route path="/Search" component={Search}/>
                 <Route path="/CreateMeme" component={CreateMeme}/>
+               
              </nav>
             </Router>
         </div>
