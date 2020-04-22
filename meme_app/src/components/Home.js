@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Search from "./Search";
+import CreateMeme from './CreateMeme'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 
 export default function Home() {
@@ -9,7 +10,8 @@ export default function Home() {
             <Router>
             <nav>
                 <h3>Welcome to Meme Generator</h3>
-                <Route path="/" />
+                <Route path="/" component={Search}/>
+                <Route path="/CreateMeme" component={CreateMeme}/>
              </nav>
             </Router>
         </div>
