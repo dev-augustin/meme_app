@@ -13,7 +13,7 @@ Anyone who loves to create meme
 
 
 ### Wireframe
-![wireframe]()
+![wireframe](./meme_app/wireframe/Meme_App.png)
 Stateful Components :
 
 
