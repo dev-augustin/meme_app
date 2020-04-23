@@ -34,6 +34,8 @@ export default class Search extends Component {
         // console.log(this.state.searchValue)
          const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
          console.log(searchRequest);
+         const fitlerResult=searchRequest.map((memeResult) => <div><h1>{memeResult.name} </h1> <img src={memeResult.url} alt="meme" /></div>)
+         console.log(fitlerResult)
          this.setState({searchResult :searchRequest})
      }
 
@@ -59,12 +61,11 @@ export default class Search extends Component {
                     <input type="text" name="Search" value={this.state.searchValue} placeholder="enter search text in lowercase" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
                 </form>
-                {this.state.searchResult.map((memeResult) => (
-                    <div> 
-                        <h1>{memeResult.name}</h1>
-                     <img src={memeResult.url} alt="memes"/> </div>
-                 ))
-                }
+                {/* {this.state.searchResult}  */}
+               {/* <SearchResult result= {this.state.searchResult} /> */}
+                {/* pass result to child component to display */}
+               {this.state.searchResult.map((memeResult) => <SearchResult name={memeResult.name} url={memeResult.url} />)}
+            
                 {/* <SearchResult /> */}
                 {/* Need to pass the fetched results to display in child component
                 <SearchResults /> */}
