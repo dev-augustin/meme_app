@@ -20,14 +20,17 @@ export default class Search extends Component {
         this.searchRequest();
     }
     async searchRequest(){
+         // fetching all memes
         const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
-        // fetching all memes
         console.log(response.data)
         console.log(response.data.data);
         //console.log(response.data.data.memes)
         const results=response.data.data.memes;
         console.log(results); //displays all memes
-        this.setState({searchResult :results})
+        console.log(this.state.searchValue)
+        const searchRequest = results.filter(memeFilter => memeFilter.name.includes(this.state.searchValue))
+        console.log(searchRequest)
+        //this.setState({searchResult :results})
     }
 
     //receiving the value entered in text field to search
@@ -39,7 +42,8 @@ export default class Search extends Component {
      
 
     // function to handle search
-    onSearch = () =>{
+    onSearch = (event) =>{
+        console.log(this.state.searchValue)
         this.searchRequest(this.state.searchValue);
     }
     render() {
