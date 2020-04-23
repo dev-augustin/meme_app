@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Search from "./Search";
-import CreateMeme from './CreateMeme'
+import GenerateMeme from './GenerateMeme'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 
 export default function Home() {
@@ -16,14 +16,14 @@ export default function Home() {
                        <Link to ='/Search'> Search</Link>
                     </li>
                     <li>
-                        <Link to = '/CreateMeme'>Create Meme</Link>
+                        <Link to = '/CreateCaptionsForMeme'>Create Captions for Meme</Link>
                     </li>
                     <li>  <Link to = '/Home'> Go back to Home </Link> </li>
                 </ul>
                 
                
-                <Route path="/Search" component={Search}/>
-                <Route path="/CreateMeme" component={CreateMeme}/>
+                <Route path="/Search" exact component={Search}/>
+                <Route path="/GenerateMeme" component={GenerateMeme}/>
                
              </nav>
             </Router>
