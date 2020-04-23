@@ -36,14 +36,41 @@ export default class GenerateMeme extends Component {
             text1: this.state.text1
         };
         console.log("memeData: ", memeData);
-        console.log("username: ", username);
+        //console.log("username: ", userName);
         this.postAPI(memeData);
     }
 
-    async postAPI(memeData){
+    // async postAPI(memeData){
+    //     console.log("PostAPI: ", memeData);
+    //     const response = await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
+    //     console.log(response);
+    //     console.log(response.error)
+    // }
+
+    postAPI = (memeData) => {
         console.log("PostAPI: ", memeData);
-        const response = await axios.post("", memeData)
-    }
+        fetch("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image",{
+            method: "POST",
+            headers: {
+                'Content-type' : 'mutipart-form'
+            },
+            body: memeData
+    }).then (function (res){ 
+             let memeInfo= JSON.stringify(res);
+             if(res.ok) {
+                 alert("perfect");
+                console.log(memeInfo.data.url);
+                //  console.log(res.data.data)
+             }else if (res.statusCode === 401){
+                 alert("oops");
+             }
+    }, function (e){
+           alert("error form")         
+    })
+        
+                    
+}      
+       
     render() {
         return (
             <div>
