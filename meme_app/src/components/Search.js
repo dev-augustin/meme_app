@@ -1,7 +1,7 @@
 // This will be a stateful component 
 import React, { Component } from 'react';
 import axios from "axios";
-// import Se
+import SearchResult from './SearchResult'
 
 export default class Search extends Component {
     constructor(props){
@@ -9,33 +9,38 @@ export default class Search extends Component {
         this.state = {
             searchValue: '',
             searchResult: [],
-            // name:"",
-            //url:""
+            name:"",
+            url:""
         }
+        //this.handleChange=
     }
     
 
     //API Call uisng Axios and Async Await
-    componentDidMount(){
-        this.searchRequest();
-    }
-    async searchRequest(){
-         // fetching all memes
+    // componentDidMount(){
+    //     this.searchRequest();
+    // }
+    // async searchRequest(){
+    //      // fetching all memes
+        //console.log("API: ", this.state.searchValue)
+        searchRequest = async () => {
+        const submitValue = this.state.searchValue;
+        console.log("Hello", submitValue)
         const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
-        console.log(response.data)
-        console.log(response.data.data);
+        console.log("responsedaata : ", response.data)
+        console.log("response.data.data: ", response.data.data);
         //console.log(response.data.data.memes)
         const results=response.data.data.memes;
-        console.log(results); //displays all memes
-        console.log(this.state.searchValue)
-        const searchRequest = results.filter(memeFilter => memeFilter.name.includes(this.state.searchValue))
+        console.log("Results: ", results); //displays all memes
+       // console.log(this.state.searchValue)
+        const searchRequest = results.filter(memeFilter => memeFilter.name.includes(submitValue))
         console.log(searchRequest)
-        //this.setState({searchResult :results})
+        this.setState({searchResult :results})
     }
 
     //receiving the value entered in text field to search
     handleChange = (event) =>{
-        // event.preventdefault();
+        event.preventDefault();
         console.log(event.target.value)
         this.setState({searchValue :event.target.value})
     }
@@ -43,16 +48,27 @@ export default class Search extends Component {
 
     // function to handle search
     onSearch = (event) =>{
-        console.log(this.state.searchValue)
-        this.searchRequest(this.state.searchValue);
+        event.preventDefault();
+        console.log(this.state.searchValue);
+        this.searchRequest();
     }
     render() {
+       
+        // console.log(results);
         return (
             <div>
                 <form>
                     <input type="text" name="Search" value={this.state.searchValue} placeholder="Search" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
                 </form>
+                {this.state.searchResult.map((memeResult) => (
+                    <div> 
+                        <h1>{memeResult.name}</h1>
+                     <img src={memeResult.url} alt="memes"/> </div>
+                 ))
+                }
+                {/* Need to pass the fetched results to display in child component
+                <SearchResults /> */}
             </div>
              
 
