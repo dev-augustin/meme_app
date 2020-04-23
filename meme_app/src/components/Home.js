@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css';
+import '../styles/Home.css';
 import Search from "./Search";
 import GenerateMeme from './GenerateMeme'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
