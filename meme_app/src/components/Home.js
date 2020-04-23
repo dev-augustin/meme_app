@@ -16,7 +16,7 @@ export default function Home() {
                        <Link to ='/Search'> Search</Link>
                     </li>
                     <li>
-                        <Link to = '/CreateCaptionsForMeme'>Create Captions for Meme</Link>
+                        <Link to = '/GenerateMeme'>Create Captions for Meme</Link>
                     </li>
                     <li>  <Link to = '/Home'> Go back to Home </Link> </li>
                 </ul>
