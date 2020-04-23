@@ -14,7 +14,7 @@ Anyone who loves to create meme
 ### Wireframe
 ![wireframe](./meme_app/wireframe/Meme_App.png)
 Stateful Components :
-1. CreateMeme.js -  http post
+1. GenerateMeme.js -  http post
 2. Search.js - http get (to fetch memes)
 
 Stateless:
