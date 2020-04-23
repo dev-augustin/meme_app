@@ -10,7 +10,8 @@ export default class Search extends Component {
             searchValue: '',
             searchResult: [],
             name:"",
-            url:""
+            url:"",
+            error: ""
         }
         //this.handleChange=
     }
@@ -33,9 +34,9 @@ export default class Search extends Component {
         const results=response.data.data.memes;
         console.log("Results: ", results); //displays all memes
        // console.log(this.state.searchValue)
-        const searchRequest = results.filter(memeFilter => memeFilter.name.includes(submitValue))
-        console.log(searchRequest)
-        this.setState({searchResult :results})
+        const searchRequest = results.filter(memeFilter => memeFilter.name.includes(this.state.searchValue))
+        console.log(searchRequest);
+        this.setState({searchResult :searchRequest})
     }
 
     //receiving the value entered in text field to search
