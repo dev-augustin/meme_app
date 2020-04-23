@@ -56,10 +56,10 @@ export default class GenerateMeme extends Component {
             },
             body: memeData
     }).then (function (res){ 
-             let memeInfo= JSON.stringify(res);
+            //  let memeInfo= JSON.stringify(res);
              if(res.ok) {
                  alert("perfect");
-                console.log(memeInfo.data.url);
+                console.log(res);
                 //  console.log(res.data.data)
              }else if (res.statusCode === 401){
                  alert("oops");
