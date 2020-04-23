@@ -8,7 +8,7 @@ export default class Search extends Component {
         super(props);
         this.state = {
             searchValue: '',
-            searchResult: [],
+            searchResult: "",
             name:"",
             url:"",
             error: ""
@@ -34,9 +34,14 @@ export default class Search extends Component {
         const results=response.data.data.memes;
         console.log("Results: ", results); //displays all memes
        // console.log(this.state.searchValue)
-        const searchRequest = results.filter(memeFilter => memeFilter.name.includes(this.state.searchValue))
+        const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue))
         console.log(searchRequest);
-        this.setState({searchResult :searchRequest})
+        if (searchRequest!=null)
+        {
+            this.setState({searchResult :searchRequest})
+        }else{
+            this.setState({error: "No results"})
+        }
     }
 
     //receiving the value entered in text field to search
@@ -53,24 +58,48 @@ export default class Search extends Component {
         console.log(this.state.searchValue);
         this.searchRequest();
     }
-    render() {
+    render() 
+    {
        
         // console.log(results);
         return (
-            <div>
+              <React.Fragment>
+
+                  
+          
                 <form>
                     <input type="text" name="Search" value={this.state.searchValue} placeholder="Search" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
                 </form>
-                {this.state.searchResult.map((memeResult) => (
+
+                  {/* { this.state.searchResult ? (
+                     <div> */}
+                       {this.state.searchResult.map((memeResult) => (
                     <div> 
                         <h1>{memeResult.name}</h1>
-                     <img src={memeResult.url} alt="memes"/> </div>
-                 ))
-                }
-                {/* Need to pass the fetched results to display in child component
-                <SearchResults /> */}
-            </div>
+                     <img src={memeResult.url} alt="memes"/> </div>))}
+            {/* //       ))} </div> */}
+            {/* //       ) :
+            //     (<p>Try</p>)
+            // } */}
+
+                </React.Fragment>
+
+               
+            //     { this.state.searchResult ? ()
+            //          <div>
+            //            {this.state.searchResult.map((memeResult) => (
+            //         <div> 
+            //             <h1>{memeResult.name}</h1>
+            //          <img src={memeResult.url} alt="memes"/> </div>
+            //       ))} </div>
+            //       ) :
+            //     (<p>Try</p>)
+            // }
+
+                //  Need to pass the fetched results to display in child component
+                // <SearchResults />
+        
              
 
 
@@ -85,9 +114,9 @@ export default class Search extends Component {
                 //          <h1>{memeResult.name}</h1>
                 //      <img src={memeResult.url} alt="memes"/> </div>
                 //  ))
-                // } 
+                 //} 
         
-        )
+        );
     }
 }
 
