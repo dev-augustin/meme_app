@@ -17,7 +17,7 @@ export default class GenerateMeme extends Component {
             text1: ""
         }
     }
-
+    
     handleChange = (event) => {
        event.preventDefault();
        console.log(event.target.value)
