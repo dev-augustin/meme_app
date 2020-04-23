@@ -9,8 +9,8 @@ export default class Search extends Component {
         this.state = {
             searchValue: '',
             searchResult: [],
-            name:"",
-            url:""
+            // name:"",
+            //url:""
         }
     }
     
@@ -21,52 +21,51 @@ export default class Search extends Component {
     }
     async searchRequest(){
         const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
-        // const result = response.data.memes;
-        // console.log(result)
-        // console.log(response);
-        // const resData=[];
-        // resData.push(response.data);
-        // console.log(resData[0].data);
-        // //console.log(resData[0].data[0]);//doesnt work
-        // console.log(resData[0].data.memes);
-        // console.log(resData[0].data.memes[0].name);
-        // //console.log(response.data);
-        // const result=resData[0].data.memes.map(searchResult  => 
-        //     <h1>{searchResult.memes[1]} </h1>
-        // )
-        // console.log(result)
+        // fetching all memes
+        console.log(response.data)
         console.log(response.data.data);
-        console.log(response.data.data.memes)
+        //console.log(response.data.data.memes)
         const results=response.data.data.memes;
+        console.log(results); //displays all memes
         this.setState({searchResult :results})
     }
 
     //receiving the value entered in text field to search
-    // handleChange = (event) =>{
-    //     // event.preventdefault();
-    //     this.setState({searchValue :event.target.value})
-    // }
+    handleChange = (event) =>{
+        // event.preventdefault();
+        console.log(event.target.value)
+        this.setState({searchValue :event.target.value})
+    }
      
 
     // function to handle search
-    // onSearch = () =>{
-    //     this.searchRequest(this.state.searchValue);
-    // }
+    onSearch = () =>{
+        this.searchRequest(this.state.searchValue);
+    }
     render() {
         return (
             <div>
-                {/* <form>
+                <form>
                     <input type="text" name="Search" value={this.state.searchValue} placeholder="Search" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
-                    {/* <button onClick={this.onSearch}> Search <button/> */}
-                 {/* </form> */} 
-                 {this.state.searchResult.map((memeResult) => (
-                     <div> 
-                         <h1>{memeResult.name}</h1>
-                     <img src={memeResult.url} alt="memes"/> </div>
-                 ))
-                }
+                </form>
             </div>
+             
+
+
+        //      <form>
+        //      <input type="text" name="Search" value={this.state.searchValue} placeholder="Search" onChange={this.handleChange}/>
+        //      <button onClick={this.onSearch}>Search</button>
+        //      <button onClick={this.onSearch}> Search <button/> 
+        //   </form> 
+                //  displays all memes 
+                //   {this.state.searchResult.map((memeResult) => (
+                //      <div> 
+                //          <h1>{memeResult.name}</h1>
+                //      <img src={memeResult.url} alt="memes"/> </div>
+                //  ))
+                // } 
+        
         )
     }
 }
