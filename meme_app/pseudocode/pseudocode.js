@@ -8,5 +8,6 @@
 // Create Routes for Search and CreateMeme components files
 // In CreateMeme file, create form  input fiels to create meme
 // In search file, make Axios request to fetch memes
+// From all the memes displayed, filter the memes for the search text entered
 // In SearchResutls file, display the results file passed as props from Search file
-//
+// CreateMeme - Create a form to add caption to meme"
