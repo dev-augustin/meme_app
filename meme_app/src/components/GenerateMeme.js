@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HowTo from "./HowTo"
 import axios from 'axios';
+import MemeResult from "./MemeResult"
 //import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 
@@ -15,7 +16,8 @@ export default class GenerateMeme extends Component {
             password: "",
             template_id:"",
             text0:"",
-            text1: ""
+            text1: "",
+            resultURL:""
         }
     }
     
@@ -55,10 +57,11 @@ export default class GenerateMeme extends Component {
               //console.log("meme: ",response.toJSON());
             console.log("Data:Body ",response.body);
             //console.log("S:Body ",response.body.success);
+            let resultURL=result.data.url
             console.log("resp: " , result.data.url)
             //console.log("DSt:Body ",resp.data.statusCode);
             //console.log("Bsta:Body ",resp.body.statusCode);
-            console.log("Error: ", error)
+           this.setState({resultURL: <})
         }
      
     });
