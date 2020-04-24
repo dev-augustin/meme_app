@@ -9,12 +9,15 @@ function App() {
   return (
     <React.Fragment>
     <div className="App">
+    <h2>  Welcome to Meme Generator</h2>
      <Router>
         <Switch>
           <Route exact path = '/' component={Header} />
+          {/* <Route exact path ='/'   component={Links} /> */}
           <Route exact path='/Home' component={Home}/>
           <Route exact path='/Search' component={Search} />
           <Route exact path='/GenerateMeme' component={GenerateMeme} />
+          {/* <Route exact path='/Header' */}
         </Switch>
      </Router>
     </div>
@@ -23,3 +26,7 @@ function App() {
 }
 
 export default App;
+
+
+// Reference Material: Below video helped to learn about rendering React-App as multi-page app using React-Router
+// https://www.youtube.com/watch?v=hjR-ZveXBpQ
