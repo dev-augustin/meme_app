@@ -7,7 +7,7 @@ export default function searchResult(props) {
                     <div> 
                         <h1>{props.name}</h1>
                      <img src={props.url} alt="memes"/> </div>
-               
+                    
         </div>
     )
 }
