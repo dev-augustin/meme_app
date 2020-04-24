@@ -47,13 +47,13 @@ export default class GenerateMeme extends Component {
         form : memeData
     }, function(error, response, body) {
      
-        var meme = JSON.parse(body);
+        //var meme = JSON.parse(body);
      
         if (!error && response.statusCode === 200) {
-            console.log(response)
-            console.log(meme)
-            console.log("meme: ",meme.response);
-            console.log("URL: ",meme.response.data);
+           
+            console.log("meme: ",response);
+            console.log("Data:Body ",response.body);
+            console.log("Error: ", error)
         }
      
     });
