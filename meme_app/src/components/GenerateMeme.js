@@ -50,21 +50,22 @@ export default class GenerateMeme extends Component {
     }, function(error, response, body) {
      
         //var meme = JSON.parse(body);
-     
+        let result = JSON.parse(body) 
+        let resultURL=result.data.url
         if (!error && response.statusCode === 200) {
-            let result = JSON.parse(body) 
+           
             //let resp=JSON.stringify(response);
               //console.log("meme: ",response.toJSON());
             console.log("Data:Body ",response.body);
             //console.log("S:Body ",response.body.success);
-            let resultURL=result.data.url
+           
             console.log("resp: " , result.data.url)
             //console.log("DSt:Body ",resp.data.statusCode);
             //console.log("Bsta:Body ",resp.body.statusCode);
-           this.setState({resultURL: <})
+            this.setState({resultURL: resultURL})
         }
      
-    });
+    }.bind(this));
    }
 //         console.log("PostAPI: ", memeData);
 //  await fetch.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
@@ -101,6 +102,7 @@ export default class GenerateMeme extends Component {
     render() {
         return (
             <div>
+                   <HowTo/>
                <form>
                   <label>User Name</label>
                   <input type = "text" name="username" value={this.state.username} onChange={this.handleChange}/>
@@ -114,7 +116,8 @@ export default class GenerateMeme extends Component {
                   <input type = "text" name="text1" value={this.state.text1} onChange={this.handleChange}/>
                   <button onClick={this.onSubmit}>Submit</button>
                 </form> 
-               <HowTo/>
+                 <img src={this.state.resultURL} alt=""/>
+               {/* <MemeResult url={this.state.resultURL} /> */}
             </div>
         )
     }
