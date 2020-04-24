@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HowTo from "./HowTo"
 import axios from 'axios';
 import qs from 'qs';
+import { Link } from "react-router-dom";
 //mport jsonformdata from 'json-form-data'//
 import MemeResult from "./MemeResult"
 //import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -19,7 +20,8 @@ export default class GenerateMeme extends Component {
             template_id:"",
             text0:"",
             text1: "",
-            resultURL:null
+            resultURL:null,
+            errorMessage: ""
         }
     }
     
@@ -142,6 +144,7 @@ export default class GenerateMeme extends Component {
         let resultdata =this.state.resultURL;
         return (
             <React.Fragment>
+                  <Link to ='/Header' >Home</Link>
             <div>
                    <HowTo/>
              </div> 
