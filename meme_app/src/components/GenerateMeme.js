@@ -17,7 +17,7 @@ export default class GenerateMeme extends Component {
             template_id:"",
             text0:"",
             text1: "",
-            resultURL:""
+            resultURL:null
         }
     }
     
@@ -62,7 +62,9 @@ export default class GenerateMeme extends Component {
             console.log("resp: " , result.data.url)
             //console.log("DSt:Body ",resp.data.statusCode);
             //console.log("Bsta:Body ",resp.body.statusCode);
-            this.setState({resultURL: resultURL})
+            // this.setState({resultURL: resultURL})
+        //this.setState({resultURL: <MemeResult url={this.state.resultURL}/>})
+        this.setState({resultURL: resultURL})
         }
      
     }.bind(this));
@@ -116,8 +118,13 @@ export default class GenerateMeme extends Component {
                   <input type = "text" name="text1" value={this.state.text1} onChange={this.handleChange}/>
                   <button onClick={this.onSubmit}>Submit</button>
                 </form> 
-                 <img src={this.state.resultURL} alt=""/>
-               {/* <MemeResult url={this.state.resultURL} /> */}
+                 {/* <img src={this.state.resultURL} alt=""/> */}
+
+                
+                <div>
+                {/* <MemeResult url={this.state.resultURL} />  */}
+                    </div> {/* {this.state.resultURL.map((memeResult) => <MemeResult url={memeResult.url} />)} */}
+              
             </div>
         )
     }
