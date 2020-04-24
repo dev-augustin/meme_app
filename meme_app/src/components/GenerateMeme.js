@@ -32,45 +32,64 @@ export default class GenerateMeme extends Component {
             template_id : this.state.template_id,
             username : this.state.username,
             password : this.state.password,
-            text0: this.state.picture,
+            text0: this.state.text0,
             text1: this.state.text1
         };
         console.log("memeData: ", memeData);
         //console.log("username: ", userName);
         this.postAPI(memeData);
     }
+//https://thoughts.amphibian.com/2015/07/make-memes-via-api-calls.html
+   async postAPI(memeData){
+       console.log("POSTAPI ", memeData)
+    var request = require('request');
+    request.post("https://api.imgflip.com/caption_image", {
+        form : memeData
+    }, function(error, response, body) {
+     
+        var meme = JSON.parse(body);
+     
+        if (!error && response.statusCode === 200) {
+            console.log(response)
+            console.log(meme)
+            console.log("meme: ",meme.response);
+            console.log("URL: ",meme.response.data);
+        }
+     
+    });
+   }
+//         console.log("PostAPI: ", memeData);
+//  await fetch.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
+//         console.log(response);
+//         console.log(response.error)
+//     }
 
-    // async postAPI(memeData){
-    //     console.log("PostAPI: ", memeData);
-    //     const response = await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
-    //     console.log(response);
-    //     console.log(response.error)
-    // }
-
-    postAPI = (memeData) => {
-        console.log("PostAPI: ", memeData);
-        fetch("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image",{
-            method: "POST",
-            headers: {
-                'Content-type' : 'mutipart-form'
-            },
-            body: memeData
-    }).then (function (res){ 
-            //  let memeInfo= JSON.stringify(res);
-             if(res.ok) {
-                 alert("perfect");
-                console.log(res);
-                //  console.log(res.data.data)
-             }else if (res.statusCode === 401){
-                 alert("oops");
-             }
-    }, function (e){
-           alert("error form")         
-    })
+//     postAPI = (memeData) => {
+//         console.log("PostAPI: ", memeData);
+//         fetch("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image",{
+//             method: "POST",
+//             headers: {
+//                 'Content-type' : 'mutipart/form-data'
+//        //'Content-type' : 'application/json'
+//             },
+//             body: [memeData]
+//     }).then (function (res){ 
+//             //  let memeInfo= JSON.stringify(res);
+//              if(res.ok) {
+//                  alert("perfect");
+//                 //console.log(JSON.stringify(res));
+//                  console.log(res)
+//              }else if (res.statusCode === 401){
+//                  alert("oops");
+//              }
+//     }, function (e){
+//            alert("error form")         
+//     })
         
                     
-}      
+// }      
        
+
     render() {
         return (
             <div>
