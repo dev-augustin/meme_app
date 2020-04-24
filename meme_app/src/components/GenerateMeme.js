@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import HowTo from "./HowTo"
 import axios from 'axios';
+import qs from 'qs';
+//mport jsonformdata from 'json-form-data'//
 import MemeResult from "./MemeResult"
 //import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -41,35 +43,70 @@ export default class GenerateMeme extends Component {
         //console.log("username: ", userName);
         this.postAPI(memeData);
     }
+
+    // postAPI = async (memeData) =>{
+    //     console.log("POSTAPI ", memeData);
+    //     const url = 'https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image';
+    //     const options = {
+    //         method : 'POST',
+    //         // headers : {
+    //         //     'Content-Type' : 'mutipart/form-data'
+    //         // },
+    //         form : memeData
+    //     }
+    //     fetch(url, options)
+    //      .then((error) => {
+    //          console.log(error);
+    //          //console.log("Body: ", body)
+    //         //  let result = JSON.parse(body)
+    //         //  console.log(result)
+    //      })
+    //     };
+       
+
+    // postAPI = async (memeData) =>{
+    //     console.log("POSTAPI ", memeData);
+    //     const options = {
+    //         headers : { 'Content-type' : 'mutipart/form-data'}
+    //     };
+    //     const response= await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", {memeData}, options);
+
+    //     console.log(response)
+
+
+    // }
+
+     postAPI = async (memeData) =>{
+         const data = qs.stringify(memeData);
+        console.log("POSTAPI ", memeData);
+        const response= await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", data);
+        console.log(response)
+    }
+
+    // postAPI = async (memeData) =>{
+    //     console.log("POSTAPI ", memeData);
+    //     const response= await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
+    //     console.log(response)
+    // }
 //https://thoughts.amphibian.com/2015/07/make-memes-via-api-calls.html
-   async postAPI(memeData){
-       console.log("POSTAPI ", memeData)
-    var request = require('request');
-    request.post("https://api.imgflip.com/caption_image", {
-        form : memeData
-    }, function(error, response, body) {
-     
-        //var meme = JSON.parse(body);
-        let result = JSON.parse(body) 
-        let resultURL=result.data.url
-        if (!error && response.statusCode === 200) {
+//    async postAPI(memeData){
+//        console.log("POSTAPI ", memeData)
+//     var request = require('request');
+//     request.post("https://api.imgflip.com/caption_image", {
+//         form : memeData
+//     }, function(error, response, body) {
+//         let result = JSON.parse(body) 
+//         let resultURL=result.data.url
+//         if (!error && response.statusCode === 200) {
            
-            //let resp=JSON.stringify(response);
-              //console.log("meme: ",response.toJSON());
-            console.log("Data:Body ",response.body);
-            //console.log("S:Body ",response.body.success);
-           
-            console.log("resp: " , result.data.url)
-            //console.log("DSt:Body ",resp.data.statusCode);
-            //console.log("Bsta:Body ",resp.body.statusCode);
-            // this.setState({resultURL: resultURL})
-        //this.setState({resultURL: <MemeResult url={this.state.resultURL}/>})
-        this.setState({resultURL: resultURL})
-        }
-     
-    }.bind(this));
-   }
-//         console.log("PostAPI: ", memeData);
+//             console.log("Data:Body ",response.body);    
+//             console.log("resp: " , result.data.url)
+//         //this.setState({resultURL: <MemeResult url={this.state.resultURL}/>})
+//         this.setState({resultURL: resultURL})
+//         }
+//     }.bind(this));
+//    }
+// //         console.log("PostAPI: ", memeData);
 //  await fetch.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
 //         console.log(response);
 //         console.log(response.error)
@@ -83,7 +120,7 @@ export default class GenerateMeme extends Component {
 //                 'Content-type' : 'mutipart/form-data'
 //        //'Content-type' : 'application/json'
 //             },
-//             body: [memeData]
+//             form: memeData
 //     }).then (function (res){ 
 //             //  let memeInfo= JSON.stringify(res);
 //              if(res.ok) {
@@ -97,14 +134,19 @@ export default class GenerateMeme extends Component {
 //            alert("error form")         
 //     })
         
-                    
-// }      
+// }                  
+     
        
 
     render() {
+        let resultdata =this.state.resultURL;
         return (
+            <React.Fragment>
             <div>
                    <HowTo/>
+             </div> 
+
+             <div>
                <form>
                   <label>User Name</label>
                   <input type = "text" name="username" value={this.state.username} onChange={this.handleChange}/>
@@ -120,12 +162,13 @@ export default class GenerateMeme extends Component {
                 </form> 
                  {/* <img src={this.state.resultURL} alt=""/> */}
 
-                
+                 </div>    
+        {resultdata!==null && <MemeResult url={this.state.resultURL} /> }
                 <div>
                 {/* <MemeResult url={this.state.resultURL} />  */}
                     </div> {/* {this.state.resultURL.map((memeResult) => <MemeResult url={memeResult.url} />)} */}
-              
-            </div>
+              </React.Fragment>
+          
         )
     }
 }
