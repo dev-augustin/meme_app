@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import SearchResult from './SearchResult'
-import ErrorMessage from './ErrorMessage'
+import ErrorMessage from './ErrorMessage';
+import { Link } from "react-router-dom";
 export default class Search extends Component {
     constructor(props){
         super(props);
@@ -75,6 +76,7 @@ export default class Search extends Component {
             <React.Fragment>
 
             <div>
+            <Link to ='/Home' >PriyaHome</Link>
                 <form>
                     <input type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text in lowercase" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
@@ -115,3 +117,6 @@ export default class Search extends Component {
         )
     }
 }
+
+// Reference: Below article helped to learn how to display search results
+// https://medium.com/@prezshaikh/build-a-food-listing-app-with-reactjs-d1471d9ef866
