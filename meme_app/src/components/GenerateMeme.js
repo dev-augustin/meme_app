@@ -50,9 +50,14 @@ export default class GenerateMeme extends Component {
         //var meme = JSON.parse(body);
      
         if (!error && response.statusCode === 200) {
-           
-            console.log("meme: ",response);
+            let result = JSON.parse(body) 
+            //let resp=JSON.stringify(response);
+              //console.log("meme: ",response.toJSON());
             console.log("Data:Body ",response.body);
+            //console.log("S:Body ",response.body.success);
+            console.log("resp: " , result.data.url)
+            //console.log("DSt:Body ",resp.data.statusCode);
+            //console.log("Bsta:Body ",resp.body.statusCode);
             console.log("Error: ", error)
         }
      
