@@ -5,22 +5,24 @@ import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-rout
 import Header from './components/Header'
 import Search from './components/Search';
 import GenerateMeme from './components/GenerateMeme';
+
 function App() {
   return (
     <React.Fragment>
-    <div className="App">
-    <h2>  Welcome to Meme Generator</h2>
-     <Router>
-        <Switch>
-          <Route exact path = '/' component={Header} />
-          {/* <Route exact path ='/'   component={Links} /> */}
-          <Route exact path='/Home' component={Home}/>
-          <Route exact path='/Search' component={Search} />
-          <Route exact path='/GenerateMeme' component={GenerateMeme} />
-          {/* <Route exact path='/Header' */}
-        </Switch>
-     </Router>
-    </div>
+      <div className="App">
+      <h2>  Welcome to Meme Generator</h2>
+      <Router>
+          <Switch>
+            {/* <Route  path = '/' component={Header} /> */}
+            {/* <Rounpm start
+            te exact path ='/'   component={Links} /> */}
+            <Route path='/' component={Home}/>
+            {/* <Route exact path='/Search' component={Search} />
+            <Route exact path='/GenerateMeme' component={GenerateMeme} /> */}
+            {/* <Route exact path='/Header' */}
+          </Switch>
+      </Router>
+      </div>
     </React.Fragment>
   );
 }
