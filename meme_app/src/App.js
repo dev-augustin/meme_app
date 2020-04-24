@@ -9,20 +9,14 @@ import GenerateMeme from './components/GenerateMeme';
 function App() {
   return (
     <React.Fragment>
-      <div className="App">
-      <h2>  Welcome to Meme Generator</h2>
+      <div className="main-app-style">
+         <h2 className="main-page-heading">  Welcome to Meme Generator</h2>
+      </div>
       <Router>
           <Switch>
-            {/* <Route  path = '/' component={Header} /> */}
-            {/* <Rounpm start
-            te exact path ='/'   component={Links} /> */}
             <Route path='/' component={Home}/>
-            {/* <Route exact path='/Search' component={Search} />
-            <Route exact path='/GenerateMeme' component={GenerateMeme} /> */}
-            {/* <Route exact path='/Header' */}
           </Switch>
       </Router>
-      </div>
     </React.Fragment>
   );
 }
