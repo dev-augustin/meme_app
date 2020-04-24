@@ -14,16 +14,8 @@ export default class Search extends Component {
              url:"",
              error: ""
          }
-         //this.handleChange=
      }
     
-    //API Call uisng Axios and Async Await
-    // componentDidMount(){
-    //     this.searchRequest();
-    // }
-    // async searchRequest(){
-    //      // fetching all memes
-        //console.log("API: ", this.state.searchValue)
         searchRequest = async () => {
             try{
 
@@ -40,7 +32,6 @@ export default class Search extends Component {
                  console.log(searchRequest);
                 //  const fitlerResult=searchRequest.map((memeResult) => <div><h1>{memeResult.name} </h1> <img src={memeResult.url} alt="meme" /></div>)
                 //  console.log(fitlerResult)
-                //  if()
                 if(searchRequest.length>0){
                  this.setState({searchResult :searchRequest})
                 }
@@ -56,7 +47,7 @@ export default class Search extends Component {
             }
      }
 
-     //receiving the value entered in text field to search
+    //receiving the value entered in text field to search
     handleChange = (event) =>{
         event.preventDefault();
         console.log(event.target.value)
@@ -76,7 +67,7 @@ export default class Search extends Component {
             <React.Fragment>
 
             <div>
-            <Link to ='/Home' >PriyaHome</Link>
+            <Link to ='/Header' >Home</Link>
                 <form>
                     <input type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text in lowercase" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
@@ -120,3 +111,4 @@ export default class Search extends Component {
 
 // Reference: Below article helped to learn how to display search results
 // https://medium.com/@prezshaikh/build-a-food-listing-app-with-reactjs-d1471d9ef866
+// https://medium.com/@reneecruz/search-bar-in-react-js-in-six-simple-steps-4849118b2134
