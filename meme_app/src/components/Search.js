@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import SearchResult from './SearchResult'
+import ErrorMessage from './ErrorMessage'
 export default class Search extends Component {
     constructor(props){
         super(props);
@@ -23,20 +24,35 @@ export default class Search extends Component {
     //      // fetching all memes
         //console.log("API: ", this.state.searchValue)
         searchRequest = async () => {
-        const submitValue = this.state.searchValue;
-        console.log("Hello", submitValue)
-        const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
-        console.log("responsedaata : ", response.data)
-        console.log("response.data.data: ", response.data.data);
-        //console.log(response.data.data.memes)
-         const results=response.data.data.memes;
-         console.log("Results: ", results); //displays all memes
-        // console.log(this.state.searchValue)
-         const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
-         console.log(searchRequest);
-         const fitlerResult=searchRequest.map((memeResult) => <div><h1>{memeResult.name} </h1> <img src={memeResult.url} alt="meme" /></div>)
-         console.log(fitlerResult)
-         this.setState({searchResult :searchRequest})
+            try{
+
+                const submitValue = this.state.searchValue;
+                console.log("Hello", submitValue)
+                const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
+                console.log("responsedaata : ", response.data)
+                console.log("response.data.data: ", response.data.data);
+                //console.log(response.data.data.memes)
+                 const results=response.data.data.memes;
+                 console.log("Results: ", results); //displays all memes
+                // console.log(this.state.searchValue)
+                 const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
+                 console.log(searchRequest);
+                //  const fitlerResult=searchRequest.map((memeResult) => <div><h1>{memeResult.name} </h1> <img src={memeResult.url} alt="meme" /></div>)
+                //  console.log(fitlerResult)
+                //  if()
+                if(searchRequest.length>0){
+                 this.setState({searchResult :searchRequest})
+                }
+                else{
+                    const message = "No data found";
+                    this.setState({searchRequest :message})
+                }
+            }
+            catch(e){
+                const error= e;
+                console.log(e);
+                this.setState({errorMessage : error})
+            }
      }
 
      //receiving the value entered in text field to search
@@ -56,20 +72,32 @@ export default class Search extends Component {
        
         // console.log(results);
         return (
+            <React.Fragment>
+
             <div>
                 <form>
-                    <input type="text" name="Search" value={this.state.searchValue} placeholder="enter search text in lowercase" onChange={this.handleChange}/>
+                    <input type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text in lowercase" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
                 </form>
                 {/* {this.state.searchResult}  */}
                {/* <SearchResult result= {this.state.searchResult} /> */}
                 {/* pass result to child component to display */}
-               {this.state.searchResult.map((memeResult) => <SearchResult name={memeResult.name} url={memeResult.url} />)}
+        {this.state.searchResult.map((memeResult) => <SearchResult name={memeResult.name} url={memeResult.url} />)} 
             
+           <h1> {this.state.searchRequest}</h1> 
                 {/* <SearchResult /> */}
                 {/* Need to pass the fetched results to display in child component
                 <SearchResults /> */}
             </div>
+            {/* <div>
+
+         {this.state.searchResult.length==0 && <ErrorMessage error={this.state.errorMessage} />}
+       
+            </div> */}
+            {/* <div>    
+        {this.state.searchResult.length && <ErrorMessage error={this.state.errorMessage} /> }
+                </div> */}
+            </React.Fragment>
              
         //      <form>
         //      <input type="text" name="Search" value={this.state.searchValue} placeholder="Search" onChange={this.handleChange}/>
