@@ -24,6 +24,12 @@ Stateless:
 4. DisplayMeme.js
 5. BackToHome.js
 
+Reference:
+1. Below video helped to learn about rendering React-App as multi-page app using React-Router
+   https://www.youtube.com/watch?v=hjR-ZveXBpQ
+2. Conditional Rendering with tenary operators
+   https://scotch.io/tutorials/7-ways-to-implement-conditional-rendering-in-react-applications#toc-4-ternary-operators 
+
 
 
 
