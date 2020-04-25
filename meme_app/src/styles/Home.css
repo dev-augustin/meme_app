@@ -4,6 +4,7 @@ ul{
     margin:0;
     padding: 0;
     background-color: gray;
+    border: 3px dotted rgb(141, 73, 73);
 }
 /* 
 li{
@@ -20,7 +21,8 @@ li{
 .lists-display{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: large;
     font-family: cursive;
+    font-weight: bold;
 }
