@@ -37,6 +37,10 @@ export default class GenerateMeme extends Component {
         this.postAPI(memeData);
     }
 
+    // API params should be sent as HTTP parameters and not as JSON. In insomnia- POST request was succesful when data was sent as content-type: multipart form data;
+    // References which gave an idea to install and use "qs" to convert the form data:
+    // 1. https://stackoverflow.com/questions/52032202/r-interface-to-imgflip-api-https-api-imgflip-com-always-ends-in-with-the-f
+    // 2. https://stackoverflow.com/questions/22783108/convert-js-object-to-form-data
     
     postAPI = async (memeData) =>{
          const data = qs.stringify(memeData);
