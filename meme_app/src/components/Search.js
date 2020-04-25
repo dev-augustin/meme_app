@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import SearchResult from './SearchResult'
 import ErrorMessage from './ErrorMessage';
-import { Link } from "react-router-dom";
+import '../styles/Search.css';
 export default class Search extends Component {
     constructor(props){
         super(props);
@@ -12,7 +12,11 @@ export default class Search extends Component {
              searchResult: [],
              name:"",
              url:"",
-             error: ""
+             error: "",
+             noData: "",
+             message: "nodata",
+             resultName: "",
+             resultUrl: ""
          }
      }
     
@@ -20,30 +24,30 @@ export default class Search extends Component {
             try{
 
                 const submitValue = this.state.searchValue;
-                console.log("Hello", submitValue)
+                 console.log("Hello", submitValue)
                 const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
                 console.log("responsedaata : ", response.data)
-                console.log("response.data.data: ", response.data.data);
+                // console.log("response.data.data: ", response.data.data);
                 //console.log(response.data.data.memes)
                  const results=response.data.data.memes;
-                 console.log("Results: ", results); //displays all memes
-                // console.log(this.state.searchValue)
+                //  console.log("Results: ", results); //displays all memes
+                console.log(this.state.searchValue)
                  const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
-                 console.log(searchRequest);
-                //  const fitlerResult=searchRequest.map((memeResult) => <div><h1>{memeResult.name} </h1> <img src={memeResult.url} alt="meme" /></div>)
-                //  console.log(fitlerResult)
+                //  console.log(searchRequest);
+                 const fitlerResult=searchRequest.map((memeResult) => (<div>{memeResult.resultName}{memeResult.resultUrl}</div>))
+                 console.log(fitlerResult)
                 if(searchRequest.length>0){
-                 this.setState({searchResult :searchRequest})
+                 this.setState({searchResult :searchRequest});
+                 this.setState({noData: false})
                 }
                 else{
-                    const message = "No data found";
-                    this.setState({searchRequest :message})
+                    // const message = "No data found";
+                    this.setState({noData :true})
                 }
             }
             catch(e){
                 const error= e;
-                console.log(e);
-                this.setState({errorMessage : error})
+                console.log("ErrorCatch", error.response);
             }
      }
 
@@ -61,49 +65,23 @@ export default class Search extends Component {
         this.searchRequest();
     }
     render() {
-       
-        // console.log(results);
+          let res=this.state.searchResult;
         return (
+          
             <React.Fragment>
-
-            <div>
-           
-                <form>
-                    <input type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text in lowercase" onChange={this.handleChange}/>
-                    <button onClick={this.onSearch}>Search</button>
+            <div>          
+                <form className='form-container'>
+                    <input className="search-input" type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text" onChange={this.handleChange}/>
+                    <button id="#search-button" onClick={this.onSearch}>Search</button>
                 </form>
-                {/* {this.state.searchResult}  */}
-               {/* <SearchResult result= {this.state.searchResult} /> */}
-                {/* pass result to child component to display */}
-        {this.state.searchResult.map((memeResult) => <SearchResult name={memeResult.name} url={memeResult.url} />)} 
-            
-           <h1> {this.state.searchRequest}</h1> 
-                {/* <SearchResult /> */}
-                {/* Need to pass the fetched results to display in child component
-                <SearchResults /> */}
             </div>
-            {/* <div>
-
-         {this.state.searchResult.length==0 && <ErrorMessage error={this.state.errorMessage} />}
-       
-            </div> */}
-            {/* <div>    
-        {this.state.searchResult.length && <ErrorMessage error={this.state.errorMessage} /> }
-                </div> */}
+              {
+                this.state.noData ? <ErrorMessage/> :
+                res.map((memeResult, index) => {
+                return (
+                <SearchResult key={index} name={memeResult.name} url={memeResult.url} />)}) 
+              }
             </React.Fragment>
-             
-        //      <form>
-        //      <input type="text" name="Search" value={this.state.searchValue} placeholder="Search" onChange={this.handleChange}/>
-        //      <button onClick={this.onSearch}>Search</button>
-        //      <button onClick={this.onSearch}> Search <button/> 
-        //   </form> 
-                //  displays all memes 
-                //   {this.state.searchResult.map((memeResult) => (
-                //      <div> 
-                //          <h1>{memeResult.name}</h1>
-                //      <img src={memeResult.url} alt="memes"/> </div>
-                //  ))
-                // } 
         
         )
     }
@@ -112,3 +90,5 @@ export default class Search extends Component {
 // Reference: Below article helped to learn how to display search results
 // https://medium.com/@prezshaikh/build-a-food-listing-app-with-reactjs-d1471d9ef866
 // https://medium.com/@reneecruz/search-bar-in-react-js-in-six-simple-steps-4849118b2134
+// Display data from API with react
+// https://www.digitalocean.com/community/tutorials/how-to-display-data-from-the-digitalocean-api-with-react
