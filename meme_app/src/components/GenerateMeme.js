@@ -144,7 +144,7 @@ export default class GenerateMeme extends Component {
         let resultdata =this.state.resultURL;
         return (
             <React.Fragment>
-                  <Link to ='/Header' >Home</Link>
+               
             <div>
                    <HowTo/>
              </div> 
