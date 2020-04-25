@@ -3,8 +3,10 @@
     text-align: right;
     color: gray;
 }
-
-.search-form-label{
+.generate-meme{
+text-align: center;
+}
+.generate-meme-label{
     font-size: medium;
     font-family: cursive;
     font-weight: lighter;
