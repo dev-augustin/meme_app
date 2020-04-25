@@ -1,12 +1,10 @@
 import React from 'react';
-import '../'
+import '../styles/ErrorMessage.css'
 
 export default function ErrorMessage(props) {
     return (
         <div className="error-message">
-         
-         <p>   No Result found </p>
-            {/* <h3>{props.error}</h3> */}
+         <h1>   No Result found </h1>
         </div>
     )
 }
