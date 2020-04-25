@@ -1,22 +1,19 @@
 import React from 'react';
 import './App.css';
 import Home from './components/Home';
-import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
-import Header from './components/Header'
-import Search from './components/Search';
-import GenerateMeme from './components/GenerateMeme';
 
 function App() {
+  console.log("hi");
   return (
     <React.Fragment>
-      <div className="main-app-style">
-         <h2 className="main-page-heading">  Welcome to Meme Generator</h2>
+      <div>
+        <div className="main-app-style">
+          <h2 className="main-page-heading">  Welcome to Meme Generator</h2>
+        </div>
+        <div className="router-links">
+          <Home/>
+        </div>
       </div>
-      <Router>
-          <Switch>
-            <Route path='/' component={Home}/>
-          </Switch>
-      </Router>
     </React.Fragment>
   );
 }
