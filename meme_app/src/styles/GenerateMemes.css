@@ -1,0 +1,20 @@
+.how-to{
+    font-family: cursive;
+    text-align: right;
+    color: gray;
+}
+
+.search-form-label{
+    font-size: medium;
+    font-family: cursive;
+    font-weight: lighter;
+}
+
+#submit-button{
+    font-size: medium;
+    font-family: cursive;
+    font-weight: normal;
+    border-radius: 10px;
+    width: 100pxd;
+}
+/* Reference for  form styling : https://www.w3schools.com/css/css_form.asp */
