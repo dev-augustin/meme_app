@@ -67,7 +67,7 @@ export default class Search extends Component {
             <React.Fragment>
 
             <div>
-            <Link to ='/Header' >Home</Link>
+           
                 <form>
                     <input type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text in lowercase" onChange={this.handleChange}/>
                     <button onClick={this.onSearch}>Search</button>
