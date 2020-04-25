@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import HowTo from "./HowTo"
 import axios from 'axios';
-import qs from 'qs';
-import { Link } from "react-router-dom";
-//mport jsonformdata from 'json-form-data'//
-import MemeResult from "./MemeResult"
-//import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import qs from 'qs'; //queryString installed to convert JS object into multipart/form-data
+import MemeResult from "./MemeResult";
 
-
-const userName=process.env.REACT_APP_USERNAME;
-const password=process.env.REACT_APP_PASSWORD;
-console.log(userName)
 export default class GenerateMeme extends Component {
     constructor(props){
         super(props);
@@ -42,112 +34,29 @@ export default class GenerateMeme extends Component {
             text1: this.state.text1
         };
         console.log("memeData: ", memeData);
-        //console.log("username: ", userName);
         this.postAPI(memeData);
     }
 
-    // postAPI = async (memeData) =>{
-    //     console.log("POSTAPI ", memeData);
-    //     const url = 'https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image';
-    //     const options = {
-    //         method : 'POST',
-    //         // headers : {
-    //         //     'Content-Type' : 'mutipart/form-data'
-    //         // },
-    //         form : memeData
-    //     }
-    //     fetch(url, options)
-    //      .then((error) => {
-    //          console.log(error);
-    //          //console.log("Body: ", body)
-    //         //  let result = JSON.parse(body)
-    //         //  console.log(result)
-    //      })
-    //     };
-       
-
-    // postAPI = async (memeData) =>{
-    //     console.log("POSTAPI ", memeData);
-    //     const options = {
-    //         headers : { 'Content-type' : 'mutipart/form-data'}
-    //     };
-    //     const response= await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", {memeData}, options);
-
-    //     console.log(response)
-
-
-    // }
-
-     postAPI = async (memeData) =>{
+    
+    postAPI = async (memeData) =>{
          const data = qs.stringify(memeData);
         console.log("POSTAPI ", memeData);
         const response= await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", data);
         console.log(response)
     }
-
-    // postAPI = async (memeData) =>{
-    //     console.log("POSTAPI ", memeData);
-    //     const response= await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
-    //     console.log(response)
-    // }
-//https://thoughts.amphibian.com/2015/07/make-memes-via-api-calls.html
-//    async postAPI(memeData){
-//        console.log("POSTAPI ", memeData)
-//     var request = require('request');
-//     request.post("https://api.imgflip.com/caption_image", {
-//         form : memeData
-//     }, function(error, response, body) {
-//         let result = JSON.parse(body) 
-//         let resultURL=result.data.url
-//         if (!error && response.statusCode === 200) {
-           
-//             console.log("Data:Body ",response.body);    
-//             console.log("resp: " , result.data.url)
-//         //this.setState({resultURL: <MemeResult url={this.state.resultURL}/>})
-//         this.setState({resultURL: resultURL})
-//         }
-//     }.bind(this));
-//    }
-// //         console.log("PostAPI: ", memeData);
-//  await fetch.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", memeData);
-//         console.log(response);
-//         console.log(response.error)
-//     }
-
-//     postAPI = (memeData) => {
-//         console.log("PostAPI: ", memeData);
-//         fetch("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image",{
-//             method: "POST",
-//             headers: {
-//                 'Content-type' : 'mutipart/form-data'
-//        //'Content-type' : 'application/json'
-//             },
-//             form: memeData
-//     }).then (function (res){ 
-//             //  let memeInfo= JSON.stringify(res);
-//              if(res.ok) {
-//                  alert("perfect");
-//                 //console.log(JSON.stringify(res));
-//                  console.log(res)
-//              }else if (res.statusCode === 401){
-//                  alert("oops");
-//              }
-//     }, function (e){
-//            alert("error form")         
-//     })
-        
-// }                  
-     
-       
-
+               
     render() {
         let resultdata =this.state.resultURL;
         return (
             <React.Fragment>
-               
-            <div>
-                   <HowTo/>
-             </div> 
+             <div>  
+               <p><h3>Input Parameters</h3>
+                <strong>template_id:</strong> returned by the get_memes response <br/>
+                <strong> username, password:</strong> username of a valid imgflip account. <br/>for <strong>testing</strong> purpose, username: imgflip_hubot  <br/>
+                <strong>text0:</strong> Top text for the meme &nbsp;&nbsp;
+                <strong> text1:</strong> Top text for the meme 
+             </p>
+            </div>
 
              <div>
                <form>
@@ -165,8 +74,9 @@ export default class GenerateMeme extends Component {
                 </form> 
                  {/* <img src={this.state.resultURL} alt=""/> */}
 
-                 </div>    
-        {resultdata!==null && <MemeResult url={this.state.resultURL} /> }
+                </div>  
+                       {/* If HTTP post request is success, retrieve the meme img url and pass it to MemeResult child component to display */}
+                     {resultdata!==null && <MemeResult url={this.state.resultURL} /> }
                 <div>
                 {/* <MemeResult url={this.state.resultURL} />  */}
                     </div> {/* {this.state.resultURL.map((memeResult) => <MemeResult url={memeResult.url} />)} */}
