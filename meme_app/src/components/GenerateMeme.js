@@ -71,7 +71,7 @@ export default class GenerateMeme extends Component {
     }
       
     render() {
-        let resultData =this.state.info;
+        // let resultData =this.state.info;
         // console.log("der", resultData)
         return (
             <React.Fragment>
@@ -113,16 +113,15 @@ export default class GenerateMeme extends Component {
             
     } */}
 
-<div>
-
-
-{this.state.resultURL!==null && <MemeResult url={this.state.resultURL} />
-    }      
-</div>
-   <div>
+    <div>
+        {this.state.resultURL!==null && <MemeResult url={this.state.resultURL} /> }     
+        {/* Result not found message */}
+        {this.state.info}  
+    </div>
+   {/* <div>
        {/* <h1>{resultData}</h1> */}
-{resultData!==null &&  <MemeError message={resultData} /> }
-</div> 
+{/* {resultData!==null &&  <MemeError message={resultData} /> }
+</div>  */} 
 
    
 
