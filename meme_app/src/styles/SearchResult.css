@@ -1,17 +1,23 @@
-.search-result-container
+/* .search-result-container
 {
-    display: flex;
+    display: flex; 
+    flex-direction: column; */
+    /*font-weight: normal;
     justify-content: flex-start; 
     flex-wrap: wrap;
     max-width:100%;
     align-items: center;
+    font-family: cursive; */
 
-}
 /* .meme-search-result{
   
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-   
+    flex-direction: row;
+    flex-wrap: wrap;   
 } */
+.meme-search-result
+{
+    align-items: center;
+    font-family: cursive;
+
+}
