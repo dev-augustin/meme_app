@@ -113,12 +113,12 @@ export default class GenerateMeme extends Component {
             
     } */}
 
-{/* <div>
+<div>
 
 
 {this.state.resultURL!==null && <MemeResult url={this.state.resultURL} />
     }      
-</div> */}
+</div>
    <div>
        {/* <h1>{resultData}</h1> */}
 {resultData!==null &&  <MemeError message={resultData} /> }
