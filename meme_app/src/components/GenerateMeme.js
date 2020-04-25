@@ -4,6 +4,7 @@ import qs from 'qs'; //queryString installed to convert JS object into multipart
 import MemeResult from "./MemeResult";
 import MemeError from './MemeError'
 import '../styles/GenerateMemes.css';
+import erro from './MemeError';
 
 export default class GenerateMeme extends Component {
     constructor(props){
@@ -16,7 +17,8 @@ export default class GenerateMeme extends Component {
             text1: "",
             resultURL:null,
             info: "",
-            noData: ""
+            noData: "",
+            success: null
         }
     }
     
@@ -38,6 +40,7 @@ export default class GenerateMeme extends Component {
         };
         // console.log("memeData: ", memeData);
         this.postAPI(memeData);
+        // this.setState({info: "Error"})
     }
 
     // API params should be sent as HTTP parameters and not as JSON. In insomnia- POST request was succesful when data was sent as content-type: multipart form data;
@@ -53,26 +56,30 @@ export default class GenerateMeme extends Component {
             const response= await axios.post("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image", data);
             // console.log("response ", response);
             // console.log("responseData",response.data);
+            console.log(response.data.success);
+            const successData=response.data.success
             const errorMessage = response.data.error_message;
-            const meme=JSON.stringify(errorMessage);
-            // console.log(meme);
+            // console.log(errorMessage)
+            const why=JSON.stringify(errorMessage); // to convert error message response.
+            const yes=errorMessage;
+            console.log(why)
+            // console.log(why);
+            // console.log(this.setState({info:why}))
             // console.log("ErrorMessage",errorMessage) ;//error message displayed
             const resultURL=response.data.data.url;   // captioned meme url sent back as response to HTTP POST Request       
-                
-                this.setState({resultURL:resultURL });
-                // console.log(resultURL)
-                // console.log("stuck")
-                this.setState({info: "NoData"});
-                // console.log("why")
+                    this.setState({info:why});
+                    // this.setState({success: false})
+                    this.setState({resultURL :resultURL});
     }
         catch(error){
-            // console.log(error.message)
+           
         }
     }
       
     render() {
         // let resultData =this.state.info;
-        // console.log("der", resultData)
+        let res=this.state;
+        console.log("der", this.state.info)
         return (
             <React.Fragment>
             <div className="how-to">  
@@ -100,32 +107,13 @@ export default class GenerateMeme extends Component {
                   <input type = "text" name="text1" value={this.state.text1} onChange={this.handleChange}/>
                   <button id="submit-button" onClick={this.onSubmit}>Submit</button>
                 </form> 
-            </div> 
-                 {/* <img src={this.state.resultURL} alt=""/> */}
-
-             
-                       {/* If HTTP post request is success, retrieve the meme img url and pass it to MemeResult child component to display */}
-                     
-                       
-                         {/* {resultdata==null && <ErrorMessage/> } */}
-                     
-        {/* {this.state.noData ?  <ErrorMessage/> : resultData.map((result, index) => {return (<MemeResult key={index} url={result.resultURL} />)})
+            </div>
             
-    } */}
-
-    <div>
-        {this.state.resultURL!==null && <MemeResult url={this.state.resultURL} /> }     
-        {/* Result not found message */}
-        {this.state.info}  
-    </div>
-   {/* <div>
-       {/* <h1>{resultData}</h1> */}
-{/* {resultData!==null &&  <MemeError message={resultData} /> }
-</div>  */} 
-
-   
-
-  </React.Fragment>
+            {/*if this.state.info has data, error message is passsed to child component */}
+            {this.state.info && <MemeError message={this.state.info}/>}
+            {/* if result URL is fetched, it is passed to child component */}
+            {res.resultURL!==null && <MemeResult url={res.resultURL} /> }
+            </React.Fragment>
           
         )
     }
