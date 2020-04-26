@@ -12,17 +12,18 @@ An app that helps to view and create captions for memes
 Anyone who loves to create meme 
 
 ### Wireframe
-![wireframe](./meme_app/wireframe/Meme_App.png)
+![wireframe](./meme_app/wireframe/Meme_App_Wireframe.png)
 Stateful Components :
-1. GenerateMeme.js -  http post
+1. GenerateMemes.js -  http post 
 2. Search.js - http get (to fetch memes)
 
 Stateless:
 1. Home.js
+2. About.js
 2. SearchResult.js
-3. HowToUse.js
-4. DisplayMeme.js
-5. BackToHome.js
+3. HowTo.js
+4. MemeResult.js
+5. MemeError.js
 
 Reference:
 1. Below video helped to learn about rendering React-App as multi-page app using React-Router
