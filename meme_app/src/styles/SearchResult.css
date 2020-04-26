@@ -9,17 +9,17 @@
     align-items: center;
     font-family: cursive; */
 
-/* .meme-search-result{
+.meme-search-result{
   
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;   
-} */
-.meme-search-result
+    flex-direction: column;
+    /* flex-wrap: wrap;    */
+}
+/* .meme-search-result
 {
     align-items: center;
     font-family: cursive;
 
-}
+} */
 
 /* styling for error message when search has no result to display */
