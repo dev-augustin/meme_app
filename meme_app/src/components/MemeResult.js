@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/MemeResult.css';
 
+// stateless function that displays captioned image
 export default function MemeResult(props) {
     return (
         <div  className="captioned-image">

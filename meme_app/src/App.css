@@ -6,6 +6,8 @@ body{
     margin:auto;
     border: 5px dotted black;
 }
+
+/* styling main page heading */
 .main-page-heading{
     text-align: center;
     background-color: chocolate; 

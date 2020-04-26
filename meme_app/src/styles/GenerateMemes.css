@@ -6,17 +6,27 @@
 .generate-meme{
 text-align: center;
 }
+
+/* styling for form label name */
 .generate-meme-label{
     font-size: medium;
     font-family: cursive;
     font-weight: lighter;
 }
+/* styling for input field */
+.generate-meme{
+    font-size: medium;
+    font-family: cursive;
+    font-weight: lighter;
+    /* width: 100px; */
+}
+/* generate meme- search button styling  */
 
 #submit-button{
     font-size: medium;
     font-family: cursive;
     font-weight: normal;
     border-radius: 10px;
-    width: 100pxd;
+    width: 100px;
 }
 /* Reference for  form styling : https://www.w3schools.com/css/css_form.asp */

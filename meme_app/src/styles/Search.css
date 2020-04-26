@@ -1,7 +1,7 @@
 .form-container{
     text-align: center;
 }
-
+/* search input field styling  */
 .search-input{
     font-size: medium;
     font-family: cursive;
@@ -9,11 +9,12 @@
     margin-top:100px;
     width: 500px;
 }
-
+/* search button styling  */
 #search-button{
     font-size: medium;
     font-family: cursive;
     font-weight: normal;
     border-radius: 10px;
-    width: 100pxd;
+    width: 100px;
 }
+

@@ -6,6 +6,7 @@ import HowTo from './HowTo';
 import About from './About';
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 
+// Home function which has router links to all pages
 export default function Home() {
     return (
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/SearchResult.css'
+
+// stateless function that displays search result
 export default function searchResult(props) {
     return (
         <div className="search-result-container">

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/About.css';
 
+// stateless function that displays introduction about Meme generator API
 export default function About() {
     return (
         <div className="about-meme-app">

@@ -4,51 +4,38 @@ import axios from "axios";
 import SearchResult from './SearchResult'
 import ErrorMessage from './ErrorMessage';
 import '../styles/Search.css';
+
 export default class Search extends Component {
     constructor(props){
-        super(props);
-        this.state = {
-             searchValue: '',
-             searchResult: [],
-             name:"",
-             url:"",
-             error: "",
-             noData: "",
-             message: "nodata",
-             resultName: "",
-             resultUrl: ""
-         }
+    super(props);
+    this.state = {
+            searchValue: '',
+            searchResult: [],
+            name:"",
+            url:"",
+            error: "",
+            noData: "",
+            message: "nodata",
+            resultName: "",
+            resultUrl: ""
+        }
      }
     
-        searchRequest = async () => {
-            try{
-
-                const submitValue = this.state.searchValue;
-                //  console.log("Hello", submitValue)
-                const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
-                // console.log("responsedaata : ", response.data)
-                // console.log("response.data.data: ", response.data.data);
-                //console.log(response.data.data.memes)
-                 const results=response.data.data.memes;
-                //  console.log("Results: ", results); //displays all memes
-                // console.log(this.state.searchValue)
-                 const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
-                //  console.log(searchRequest);
-                //  const fitlerResult=searchRequest.map((memeResult) => (<div>{memeResult.resultName}{memeResult.resultUrl}</div>))
-                //  console.log(fitlerResult)
-                if(searchRequest.length>0){
-                 this.setState({searchResult :searchRequest});
-                 this.setState({noData: false})
-                }
-                else{
-                    // const message = "No data found";
-                    this.setState({noData :true})
-                }
+    searchRequest = async () => {
+        try{
+            const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
+            const results=response.data.data.memes;
+            const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
+            if(searchRequest.length>0){
+                this.setState({searchResult :searchRequest});
+                this.setState({noData: false})
             }
-            catch(e){
-                const error= e;
-                // console.log("ErrorCatch", error.response);
+            else{
+                this.setState({noData :true})
             }
+        }
+        catch(e){
+        }
      }
 
     //receiving the value entered in text field to search
@@ -58,7 +45,7 @@ export default class Search extends Component {
         this.setState({searchValue :event.target.value})
     }
      
-    // function to handle search
+       // on click of search button and making a request to Axios get request to fetch results based on search
     onSearch = (event) =>{
         event.preventDefault();
         // console.log(this.state.searchValue);
@@ -72,7 +59,7 @@ export default class Search extends Component {
             <div>          
                 <form className='form-container'>
                     <input className="search-input" type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text" onChange={this.handleChange}/>
-                    <button id="#search-button" onClick={this.onSearch}>Search</button>
+                    <button id="search-button" onClick={this.onSearch}>Search</button>
                 </form>
             </div>
               {

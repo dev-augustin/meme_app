@@ -1,13 +1,14 @@
 import React from 'react';
 import '../styles/HowTo.css'
 
+// stateless function that displays instructions on how to create captions to meme
 export default function HowTo() {
     return (
         <React.Fragment>
             <div className="how-to">
              <p><h3>Input Parameters</h3>
                 <strong>template_id:</strong> returned by the get_memes response <br/>
-                <strong> username, password:</strong> username of a valid imgflip account. <br/>for <strong>testing</strong> purpose, username: imgflip_hubot  <br/>
+                <strong> username, password:</strong> username of a valid imgflip account.<br/>
                 <strong>text0:</strong> Top text for the meme &nbsp;&nbsp;
                 <strong> text1:</strong> Top text for the meme 
              </p>
