@@ -9,15 +9,17 @@ text-align: center;
 
 /* styling for form label name */
 .generate-meme-label{
-    font-size: medium;
+    font-size: large;
     font-family: cursive;
     font-weight: lighter;
+    color:rgb(52, 47, 128)
 }
 /* styling for input field */
 .generate-meme{
     font-size: medium;
     font-family: cursive;
     font-weight: lighter;
+    color:rgb(52, 47, 128)
     /* width: 100px; */
 }
 /* generate meme- search button styling  */
@@ -25,8 +27,10 @@ text-align: center;
 #submit-button{
     font-size: medium;
     font-family: cursive;
-    font-weight: normal;
+    background-color: cadetblue;
+    font-weight: bold;
     border-radius: 10px;
     width: 100px;
+    color:rgb(52, 47, 128)
 }
 /* Reference for  form styling : https://www.w3schools.com/css/css_form.asp */

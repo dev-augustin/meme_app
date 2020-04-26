@@ -10,9 +10,7 @@ import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 export default function Home() {
     return (
 
-        <div className="home-container">
-
-       <Router>
+    <Router>
        <nav>
            <ul className="lists-display">
            <li>  <Link to = '/'>Home </Link> </li>
@@ -34,9 +32,9 @@ export default function Home() {
                <Route path="/" component={About} />  
           </Switch>
      
-       </Router>
-     
-   </div>
+    </Router>
+
+
    
     )
 }

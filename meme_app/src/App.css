@@ -1,24 +1,64 @@
+/* Resource:https://cssgradient.io/ - to select gradient color */
+
 body{
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    background-image:url('./Assets/wave.jpg') ;
+    /* background-image: linear-gradient(#94bbe9,#eeaeca); */
 }
-.main-app-style{
-    max-width:100%;
-    margin:auto;
-    border: 5px dotted black;
+/* main  container */
+.main-container{
+    display:flex;
+    flex-direction: row;
+    height: 200px ;
+    /* width: 1000px; */
+    /* margin:auto; */
+    border: 2px dotted black;
+    /* background-image: linear-gradient(#082400,#0b9463, #00d4ff); */
+    background-image: linear-gradient(#22c1c3,#fdbb2d);
 }
+/* .heading-container{
+    height:250px;
+    width: 400px;
+    border: 2px dotted black;
+} */
+
+/* .image-container{
+    height:250px;
+    width: 580px;
+    border: 2px dotted black; 
+} */
+.main-pic-heading{
+    height: 200px;
+    width:600px;  
+    position: absolute;
+    right:5px;
+    border-left:2px dotted black;
+  }
+
+/* .center-pic{
+    height: 250px;
+    width:400px;
+  } */
 
 /* styling main page heading */
 .main-page-heading{
-    text-align: center;
-    background-color: chocolate; 
-    padding: 60px;
-    height:100px; 
-    color: black;
-    margin:0;   
+    
     font-family: cursive;
+    font-family: gido;
+    position: absolute;
+    font-weight: 600;
+    font-size: 40px;
+    /* font-display: 100px; */
+    top: 30px;
+    left: 450px;
+    color: rgb(42, 80, 163);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-/* .router-links{
+
+/* .router-links-container{
+   display: flex;
+   flex-direction: column;
    
 } */
 

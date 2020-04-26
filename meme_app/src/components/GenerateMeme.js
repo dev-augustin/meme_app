@@ -73,8 +73,8 @@ export default class GenerateMeme extends Component {
             <div className="how-to">  
                <p>  
                 <strong>Input Parameters</strong>
-                <strong>template_id:</strong> returned by the get_memes response <br/>
-                <strong> username, password:</strong> username of a valid imgflip account.<br/>
+                <strong>template_id:</strong> returned by the get_memes response &nbsp;
+                <strong> username, password:</strong> username of a valid imgflip account&nbsp;&nbsp;
                 <strong>text0:</strong> Top text for the meme &nbsp;&nbsp;
                 <strong> text1:</strong> Top text for the meme 
                 <a href="https://api.imgflip.com/popular_meme_ids" target="_blank" alt="template-ids"> Link :template_id for meme images</a>
@@ -90,9 +90,9 @@ export default class GenerateMeme extends Component {
                   <label className="generate-meme-label">Template_ID</label>
                   <input className="generate-meme" type = "text" name="template_id" value={this.state.template_id} onChange={this.handleChange}/>
                   <label className="generate-meme-label">Text0</label>
-                  <input className="generate-meme" type = "text" name="text0" value={this.state.text0} onChange={this.handleChange}/>
+                  <input className="generate-meme" type = "text" name="text0" value={this.state.text0} onChange={this.handleChange} style={{width:'300px'}}/>
                   <label className="generate-meme-label">Text1</label>
-                  <input className="generate-meme" type = "text" name="text1" value={this.state.text1} onChange={this.handleChange}/>
+                  <input className="generate-meme" type = "text" name="text1" value={this.state.text1} onChange={this.handleChange} style={{width:'300px'}}/>
                   <button id="submit-button" onClick={this.onSubmit}>Generate</button>
                 </form> 
             </div>
