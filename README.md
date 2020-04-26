@@ -12,7 +12,7 @@ An app that helps to view and create captions for memes
 Anyone who loves to create meme 
 
 ### Wireframe
-![wireframe](./meme_app/wireframe/Meme_App_Wireframe.png)
+![wireframe](./meme_app/wireframe/MemeAppWireframe.png)
 Stateful Components :
 1. GenerateMemes.js -  http post 
 2. Search.js - http get (to fetch memes)
