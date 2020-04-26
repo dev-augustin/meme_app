@@ -1,6 +1,14 @@
 .form-container{
     text-align: center;
 }
+
+.search-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 5px;
+    margin: 10px;
+}
 /* search input field styling  */
 .search-input{
     font-size: medium;

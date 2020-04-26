@@ -62,12 +62,14 @@ export default class Search extends Component {
                     <button id="search-button" onClick={this.onSearch}>Search</button>
                 </form>
             </div>
-              {
+            <div className="search-container">
+             {
                 this.state.noData ? <ErrorMessage/> :
                 res.map((memeResult, index) => {
                 return (
                 <SearchResult key={index} name={memeResult.name} url={memeResult.url} />)}) 
               }
+            </div>
             </React.Fragment>
         
         )

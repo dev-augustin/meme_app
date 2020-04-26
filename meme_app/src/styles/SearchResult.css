@@ -1,25 +1,8 @@
-.search-result-container
-{
-    /* display: flex;  unable to fetch result using flex.
-    flex-direction: row; */
-    margin-top: 10px ;
 
+.meme-title{
+    font-size: 20px;
+    text-align: center;
+    font-weight: lighter;
 }
-/* .search-result-container{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-} */
-/*   
-    display: flex;
-    flex-direction: column; */
-    /* flex-wrap: wrap;    */
 
-/* .meme-search-result
-{
-    align-items: center;
-    font-family: cursive;
 
-} */
-
-/* styling for error message when search has no result to display */

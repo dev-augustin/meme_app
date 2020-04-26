@@ -70,14 +70,13 @@ export default class GenerateMeme extends Component {
         let res=this.state;
         return (
             <React.Fragment>
-            <div className="how-to">  
+            <div className="how-to-generate">  
                <p>  
-                <strong>Input Parameters</strong>
-                <strong>template_id:</strong> returned by the get_memes response &nbsp;
-                <strong> username, password:</strong> username of a valid imgflip account&nbsp;&nbsp;
-                <strong>text0:</strong> Top text for the meme &nbsp;&nbsp;
-                <strong> text1:</strong> Top text for the meme 
-                <a href="https://api.imgflip.com/popular_meme_ids" target="_blank" alt="template-ids"> Link :template_id for meme images</a>
+                <strong> username, password:</strong> <span className="text-color">username, password of a valid imgflip account</span>&nbsp;&nbsp;
+                <strong>template_id:</strong> <span className="text-color">returned by the get_memes response</span> &nbsp;&nbsp;
+                <strong>text0:</strong><span className="text-color">Top text for the meme </span>&nbsp;&nbsp;
+                <strong> text1:</strong> <span className="text-color">bottom text for the meme </span>&nbsp;&nbsp;
+                <a href="https://api.imgflip.com/popular_meme_ids" target="_blank" alt="template-ids"> Link:template_id for meme images</a>
               </p>
             </div>
 

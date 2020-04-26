@@ -1,10 +1,21 @@
-.how-to{
+.how-to-generate{
     font-family: cursive;
-    text-align: right;
+    text-align: center;
     color: gray;
+    font-weight: bold;
+    /* border: 1px dotted gray;*/
+} 
+
+
+/* hightlighting specific instructions */
+.text-color{
+    color: green;
+    font-weight: bold;
 }
+
 .generate-meme{
 text-align: center;
+margin-top: 10px;
 }
 
 /* styling for form label name */
@@ -33,4 +44,6 @@ text-align: center;
     width: 100px;
     color:rgb(52, 47, 128)
 }
+
+
 /* Reference for  form styling : https://www.w3schools.com/css/css_form.asp */
