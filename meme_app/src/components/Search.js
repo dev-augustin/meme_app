@@ -30,13 +30,14 @@ export default class Search extends Component {
             const searchRequest = results.filter(memeFilter => memeFilter.name.includes(this.state.searchValue));
             if(searchRequest.length>0){
                 this.setState({searchResult :searchRequest});
-                this.setState({noData: false})
+                this.setState({noData: false})  // set to false when search result displays result for search value
             }
             else{
-                this.setState({noData :true})
+                this.setState({noData :true}) // set to true when search result does not return any results for search value
             }
         }
         catch(e){
+            this.setState({hasError:e});
         }
      }
 
@@ -69,12 +70,18 @@ export default class Search extends Component {
                 </form>
             </div>
             <div className="search-container">
+             {/* If this.state.noData return true - display Error Message 
+                else display the results*/}
              {
                 this.state.noData ? <ErrorMessage/> :
                 res.map((memeResult, index) => {
                 return (
                 <SearchResult key={index} name={memeResult.name} url={memeResult.url} />)}) 
               }
+            </div>
+            <div>
+                {/* If catch block has an error, display that error */}
+                {this.state.hasError &&  <h3>{this.state.hasError}</h3>}    
             </div>
             </React.Fragment>
         

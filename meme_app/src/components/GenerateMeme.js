@@ -17,7 +17,8 @@ export default class GenerateMeme extends Component {
             resultURL:null,
             info: "",
             noData: "",
-            success: null
+            success: null,
+            hasError: ""
         }
     }
     
@@ -61,7 +62,8 @@ export default class GenerateMeme extends Component {
             this.setState({resultURL :resultURL});
     }
         catch(error){
-            // console.log(error.message)
+            console.log(error.message)
+             this.setState({hasError:error.message})
         }
     }
       
@@ -73,7 +75,7 @@ export default class GenerateMeme extends Component {
             <div className="how-to-generate">  
                <p>  
                 <strong> username, password:</strong> <span className="text-color">username, password of a valid imgflip account</span>&nbsp;&nbsp;
-                <strong>template_id:</strong> <span className="text-color">returned by the get_memes response</span> &nbsp;&nbsp;
+                <strong>template_id:</strong> <span className="text-color">click on template ID link</span> &nbsp;&nbsp;
                 <strong>text0:</strong><span className="text-color">Top text for the meme </span>&nbsp;&nbsp;
                 <strong> text1:</strong> <span className="text-color">bottom text for the meme </span>&nbsp;&nbsp;
                 <a href="https://api.imgflip.com/popular_meme_ids" target="_blank" alt="template-ids"> Link:template_id for meme images</a>
@@ -95,8 +97,15 @@ export default class GenerateMeme extends Component {
                   <button id="submit-button" onClick={this.onSubmit}>Generate</button>
                 </form> 
             </div>
+                {/* If this.state.info is true, display Meme Error message */}
                 {this.state.info && <MemeError message={this.state.info}/>}
+                {/* If result URL is true, display the generate meme with user define caption */}
                 {res.resultURL!==null && <MemeResult url={res.resultURL} /> }
+            <div>
+                 {/* If catch block has an error and if this.state.info doesnt have any error, then display the error */}
+                {this.state.hasError &&(this.state.info==null) && <h3>{this.state.hasError}</h3>}
+            </div>  
+               
   </React.Fragment>
           
         )

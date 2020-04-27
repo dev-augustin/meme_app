@@ -7,7 +7,7 @@ export default function HowTo() {
         <React.Fragment>
             <div className="how-to">
              <p><h3>Input Parameters</h3>
-                <strong>template_id:</strong> <span className="text-color">returned by the get_memes response </span><br/>
+                <strong>template_id:</strong> <span className="text-color">click on template ID link </span><br/>
                 <strong> username, password:</strong> <span className="text-color">username & password of a valid imgflip account</span><br/>
                 <strong>text0:</strong> <span className="text-color">Top text for the meme </span>&nbsp;&nbsp;
                 <strong> text1:</strong> <span className="text-color">botton text for the meme </span>
