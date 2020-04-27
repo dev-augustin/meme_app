@@ -14,13 +14,6 @@ function App() {
         <div className="image-container">
           <img className='main-pic-heading' src={heading} alt = "" />
         </div>
-        {/* <div className="heading-container">
-          <h2 className="main-page-heading"> Meme Generator</h2>
-        </div> */}
-      
-        {/* <div className="image-container">
-          <img className='main-pic-heading' src={heading} alt = "" />
-        </div> */}
         </div>
       
         <div className="router-links-container">

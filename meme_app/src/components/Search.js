@@ -25,7 +25,9 @@ export default class Search extends Component {
         try{
             const response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.imgflip.com/get_memes/");
             const results=response.data.data.memes;
-            const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
+            //const searchRequest = results.filter(memeFilter => memeFilter.name.toLowerCase().includes(this.state.searchValue));
+            // The below request filters the meme whose name includes the search text
+            const searchRequest = results.filter(memeFilter => memeFilter.name.includes(this.state.searchValue));
             if(searchRequest.length>0){
                 this.setState({searchResult :searchRequest});
                 this.setState({noData: false})
@@ -58,7 +60,11 @@ export default class Search extends Component {
             <React.Fragment>
             <div>          
                 <form className='form-container'>
-                    <input className="search-input" type="text" name="Search" value={this.state.searchValue.toLowerCase()} placeholder="enter search text" onChange={this.handleChange}/>
+                    {/* <input className="search-input" type="text" name="Search" value={this.state.searchValue.charAt(0).toUpperCase()+ this.state.searchValue.slice(1)} placeholder="enter search text" onChange={this.handleChange}/> */}
+                    <input className="search-input" type="text" name="Search" value={this.state.searchValue.charAt(0).toUpperCase()+ this.state.searchValue.slice(1) } placeholder="enter search text" onChange={this.handleChange}/>
+                    {/* charAt(0).toUpperCase()+ this.state.searchValue.slice(1) - converts first letter of the word to UpperCase */}
+                    {/* The name in ImgAPI has the first letter of word in UPPERCASE */}
+                    {/* Resource https://www.tutorialrepublic.com/faq/how-to-make-the-first-letter-of-a-string-uppercase-in-javascript.php */}
                     <button id="search-button" onClick={this.onSearch}>Search</button>
                 </form>
             </div>
@@ -76,7 +82,7 @@ export default class Search extends Component {
     }
 }
 
-// Reference: Below article helped to learn how to display search results
+// Reference: Below article helped to learn how to display search results 
 // https://medium.com/@prezshaikh/build-a-food-listing-app-with-reactjs-d1471d9ef866
 // https://medium.com/@reneecruz/search-bar-in-react-js-in-six-simple-steps-4849118b2134
 // Display data from API with react
